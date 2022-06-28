@@ -1,0 +1,19 @@
+name: Example workflow using Bearer
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read # Minimal permissions
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Bearer
+        uses: bearer/actions@v2
+        env:
+          BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
